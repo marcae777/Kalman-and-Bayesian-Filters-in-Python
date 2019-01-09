@@ -1,0 +1,565 @@
+%\PassOptionsToPackage{table}{xcolor}
+\documentclass[x11names,table,pdflatex,spanish,letterpaper,12pt,oneside]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAQUETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} %ESPAÑOL
+%\usepackage[cp1252]{inputenc}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx} %INSERTAR FIGURAS
+\usepackage{fancyhdr} %MODIFICA ENCABEZADOS
+\usepackage{amsmath} %COSAS DE MATEMATICAS
+\usepackage{enumerate} %PARA HACER LAS VIÑETAS
+%\usepackage{subfig}
+\usepackage{listings}
+\usepackage{subfloat}
+\usepackage{multirow}
+\usepackage[hidelinks]{hyperref} %PARA LOS HIPERVINCULOS Y LOS BOOKMARKS
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage[round]{natbib}
+\usepackage{eso-pic}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{threeparttablex}
+\usepackage{geometry}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{caption}
+\setcounter{secnumdepth}{0} 
+\setcounter{tocdepth}{1} 
+\newcounter{ns}
+\addtocounter{ns}{1} 
+
+%\usepackage[left=1.5in, right=1in, top=1in, bottom=1.4in, includefoot, headheight=13.6pt]{geometry}
+%\usepackage{subcaption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MáRGENES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\voffset=-1.8cm \setlength {\topmargin}{40pt}
+\setlength{\headheight}{0.96 cm} \setlength {\headsep}{0.5cm}
+\setlength {\textheight}{21.7cm} \setlength {\footskip}{0.5cm}
+\hoffset=0.5cm \setlength {\oddsidemargin}{0pt} \setlength
+{\textwidth}{16cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Si se maman de que nos les compile, descomenten el /nonstopmode %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nonstopmode
+
+%Organiza el formato de los capitulos
+\titleformat{\chapter}{\normalfont\huge\bfseries\centering\color{CiceBlue3}}{\thechapter}{20pt}{\Huge}
+\titlespacing{\chapter}{15pt}{*0}{0pt}
+%Organiza secciones y sub-secciones
+\titleformat{\section}{\normalfont\large\bfseries\color{CiceBlue3}}{\textcolor{CiceBlue3}{\thesection.}}{20pt}{\large}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{CiceBlue3}}{\textcolor{CiceBlue3}{\thesubsection.}}{20pt}{\large}
+
+%Colores propios de el formato del informe
+\definecolor{CiceBlue}{HTML}{1E3696}
+\definecolor{CiceBlue2}{HTML}{6B92BC}
+\definecolor{CiceBlue3}{HTML}{22487A}
+\definecolor{CiceGray}{HTML}{585858}
+\definecolor{CiceGray2}{HTML}{CCCCCC}
+
+\newcommand\Contrato{%
+\put(-70,310){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+
+\begin{tikzpicture}%[opacity=0.5]
+    \draw (1, 1) node {\small{\textsf{\textcolor{CiceBlue3}{}}}};
+\end{tikzpicture}
+\vfill
+}}}
+
+
+\newcommand\Cabeza{%
+\put(-325,281.5){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\begin{tikzpicture}%[opacity=0.5]
+    \includegraphics[width=25cm,height=2.3cm]{Figuras/Plantilla/encabezado.png}
+    \small{\textsf{\textcolor{CiceBlue2}{Segundo Informe de avance contrato Ciencia y tecnología 554 de 2016}}};
+\end{tikzpicture}
+\vfill
+}}}
+
+\newcommand\Pie{%
+\put(-325,-450){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\begin{tikzpicture}
+    \includegraphics[scale=1.395]{Figuras/Plantilla/pie.png};
+\end{tikzpicture}
+\vfill
+}}}
+
+
+\newcommand\Cice{%
+\put(-322,-450){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\begin{tikzpicture}
+\includegraphics[height=28cm]{Figuras/Plantilla/fondo_1.png};%
+\end{tikzpicture}
+\vfill
+}}}
+
+\begin{document}
+\AddToShipoutPicture{\Cabeza}
+\AddToShipoutPicture{\Pie}
+\AddToShipoutPicture{\Contrato}
+
+%%%%%%%%%%%%% CAMBIAR ALGUNAS COSAS DE FORMATO %%%%%%%%%%%%%%%%%%%
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\listtablename}{\textcolor{CiceBlue3}{Indice de Tablas}}
+\renewcommand{\tablename}{\textbf{Tabla}}
+\renewcommand{\listfigurename}{\textcolor{CiceBlue3}{Indice de Figuras}}
+\renewcommand{\figurename}{\textbf{Figura}}
+\renewcommand{\contentsname}{\textcolor{CiceBlue3}{Contenido}}
+\renewcommand{\bibname}{\textcolor{CiceBlue3}{Referencias}}
+%\renewcommand\refname{Bibliography}
+%\renewcommand\refname{referencias}
+\setlength{\parskip}{2.5mm} %ESPACIO ENTRE Pï¿½RRAFOS
+
+
+\pagestyle{fancy}
+%\fancyhead{}
+\fancyhead[LO]{}
+\fancyhead[RO]{}
+\fancyhead[CO]{}
+\fancyfoot[C]{\thepage}
+
+%\ULCornerWallPaper{0.5}{amva}
+%\fancyhead[CE]{\nouppercase \rightmark}
+\linespread{1.1} %ESPACIOS ENTRE Lï¿½NEAS
+\hypersetup{bookmarksopen, bookmarksnumbered} %PA QUE SE VEAN LOS BOOKMARKS Y LOS NUMEROS
+
+
+%\hyphenation{de-sa-rro-llo}
+
+%%%%%%%%%%%%%%%%%%% PORTADA - TABLAS %%%%%%%%%%%%%%%%%%%
+\frontmatter
+%%% PA QUE LOS NUMEROS ROMANOS SEAN EN MINUSCULA %%%
+\makeatletter
+\def\@roman#1{\romannumeral #1}
+
+\makeatother
+%%%
+%\include{Portada}
+\tableofcontents
+\listoffigures
+ %\listoftables
+%
+%
+%
+%%%%%%%%%%%%%%%%%%% CAPITULOS %%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+
+  
+\chapter{Introducción}
+\begin{tikzpicture}
+\draw[CiceBlue3,line width=1] (0cm,0) -- (15cm,0);
+\end{tikzpicture}
+
+
+
+
+\section{Predicción de inundaciones}
+
+
+Los eventos de inundación extremos se caracterizan por presentar un inicio rápido y un tiempo de respuesta cortos, además, es difícil predecir la magnitud, tiempo y lugar de ocurrencia. Por otro lado, los mecanismos generadores de las inundaciones, son pobremente entendidos. Debido a esto, la capacidad de tomar acciones, para reducir daños económicos y evitar la pérdida de vidas, es limitada. Actualmente existen herramientas para la interpretación y predicción de este tipo de eventos, como los modelos hidrológicos. Desde la hidrógrafa unitaria(sherman) 
+capacidad de predecir la hidrógrafa a partir de datos de lluvia, 
+se han desarrollado modelos de entrada y salida de datos (data driven models)
+y el desarrollo de modelos físicos que ,
+
+modelos empíricos, hasta modelos con significado físico
+
+estos avances en la teoría, de la mano con el avance den la capacidad computacional del siglo XX, ha hecho posible, la utilización algoritmos más complejos y potentes. 
+
+modelos hidrológicos distribuidos, 
+
+En la actualidad, se buscan nuevas alternativas, desde Inteligencia artificial, asimilación de datos.
+
+
+\section{Incertidumbre en el proceso de Modelación}
+
+La capacidad de predecir de forma razonable el estado y la evolución de las variables y parámetros de un modelo hidrológico, depende en gran medida, de lograr representar conceptualmente y de forma acertada los procesos que se dan dentro de la cuenca, de la elección de las condiciones iniciales, de la correcta calibración de los parámetros y de la utilización de la mayor cantidad de información disponible, que puede provenir de diferentes fuentes. Hay que tener en cuenta, que los datos de entreda y salida de los modelos y la información obtenida por los sensores es imperfecta, es decir, tiene una incertidumbre asociada. Recientemente, varios autores han mostrado el beneficio de integrar el cálculo de la incertidumbre en el proceso de modelación. Algunos han desarrollado esquemas de análisis estadístico donde se puede obtener una adecuada cuantificación de los errores asociados, tanto a los procesos (incertidumbre estructural), como a los datos de entrada y a los datos de salida. También se han desarrollado estudios donde se cuantifica la incertidumbre en los parámetros. En conjunto a lo anterior, es posible mejorar la predicción teniendo en cuenta la incertidumbre de las diferentes fuentes de información \citep{reichle2002hydrologic}.
+
+
+\section{Asimilación de Datos}
+La asimilación de datos (DA), es un procedimiento que integra el conocimimento que se tiene del sistema, con las observaciones, sintetizando la información en un modelo dinámico (Houser et al., 2012). Una de las técnicas de asimilación más utilizadas en hidrología es el Ensemble Kalman Filter (EnKF) \citep{zhang2017state}, una adaptación del Filtro Kalman (KF) \citep{kalman1960new} para sistemas no lineales, propuesta por \citep{evensen1994sequential}\citep{burgers1998analysis}.
+
+El EnKF Es un filtro bayesiano usado para estimar probables estados del sistema basado en información previa. Aplicado a la modelación hidrológica, corrige el estado del sistema actual a partir de los registros observados, con el fin de optimizar las condiciones iniciales del modelo sin la necesidad de afectar el esquema conceptual \citep{burgers1998analysis}. Desde su formulación, el EnKF ha adquirido un creciente prestigio en predicción en tiempo real en diferentes campos, clima, tusamis, predicción de inundaciones, etc, dada a su habilidad de caracterizar de manera acertada la incertidumbre. 
+
+A pesar de la eficacia del método de asimilación, el desempeño de la predicción está limitado a la parametrización de los modelos. En el proceso de calibración típico de un modelo hidrológico, se utilizan datos históricos, se asume que los parámetros son invariantes en el tiempo y se modifican hasta obtener soluciones similares a los datos observados. Este tipo de técnica no tendrá en cuenta información de futuras observaciones, además, centra la incertidumbre en los parámetros, mas no en a los datos de entrada, salida, y a la estructura del modelo. Por esta razón, se han venido desarrollando nuevas estructuras como los filtros duales, que corrigen tanto los estados del sistema, como los parámetros \citep{moradkhani2005dual}. 
+
+ya que los métodos de calibración convencionales atribuyen la incertidumbre del modelo (estructural), y de los datos de entrada, y salida, a la incertidumbre en los parámetros.
+
+Estos procedimientos de calibración minimizan el error en la estimación a partir de datos históricos, pero su esquema conceptual no tendrá en cuenta los datos de observaciones futuras, además, asume que los parámetros son invariantes en el tiempo, lo cual puede no llegar a ser correcto, por ejemplo, en cuencas con alta actividad antrópica,donde es necesario recalibrar los parámetros continuamente. 
+
+
+Se ha evaluado el beneficio de corregir la humedad del suelo con el EnKF en avenidas torrenciales y se han desarrollado diferentes esquemas con éxito, demostrado la necesidad de evaluar varias propuestas para obtener un mejor desempeño según el tipo de cuenca \citep{vergara2014improving}. 
+
+
+teniendo en cuenta que existen pocas aplicaciones en cuencas tropicales con comportamiento torrencial, este tipo de tecnologías implementadas en este tipo de cuencas puede ser de gran utilidad dentro de un sistema de alertas tempranas.
+
+
+
+
+\section{Hipótesis.}
+\begin{tikzpicture}
+\draw[CiceBlue3,line width=1] (0cm,0) -- (15cm,0);
+\end{tikzpicture}
+
+
+En una cuenca tropical con características torrenciales es posible obtener mejoras en la predicción de caudales extremos mediante una metodología de asimilación.
+
+\section{Objetivos}
+\begin{tikzpicture}
+\draw[CiceBlue3,line width=1] (0cm,0) -- (15cm,0);
+\end{tikzpicture}
+
+\subsection{Objetivo general}
+Evaluar la implementación de varios esquemas de asimilación mediante el EnKF, para optimizar parámetros y mejorar las condiciones iniciales de un modelo hidrológico, en diferentes escalas.
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+
+\item Desarrollar esquemas de asimilación para la optimización de variables de estado en un modelo hidrológico.
+
+\item Comparar el desempeño de los esquemas de asimilación en el calculo de caudal y humedad del suelo, en diferentes escalas.
+
+\item Cuantificar la incertidumbre y la relación estadística entre las variables y parámetros involucrados en el proceso de modelación.
+
+\item Satellite remote sensing?
+
+\end{itemize}
+
+%\section{Planteamiento y alcance}
+
+%\section{Estructura del Documento}
+
+
+\chapter{Metodología}
+\begin{tikzpicture}
+\draw[CiceBlue3,line width=1] (0cm,0) -- (15cm,0);
+\end{tikzpicture}
+
+\subsection{Concepto de estado}
+Se define estado de un sistema como la mínima cantidad de información necesaria en un instante para que, coniendo la entrada a partir e ese instante, se pueda determinar la salida en cualquier instante posterior \citep{dominguez2000control}
+
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=7cm]{Figuras/tanque.png}
+	\caption{Esquema de un tanque}
+ \label{niveles_risk}
+ \end{figure}
+ 
+
+$$q(t)\ =\ \dot{V}(t)\ =\ A\dot{h}(t)$$
+
+$$\int_{-\infty}^{t} \frac{1}{A}q(\tau)d\tau = \int_{-\infty}^{t_{0}} \frac{1}{A}q(\tau)d\tau\ +\ \int_{t_{0}}^{t} \frac{1}{A}q(\tau)d\tau\ =\ h(t_{0})\ +\ \int_{t_{0}}^{t} \frac{1}{A}q(\tau)d\tau$$
+
+$$h(t)\ =\ \psi(t,t_{0},h(t_{0}),u(\tau)),\ t_{0}\ \leq\ \tau\ < t$$
+
+\begin{equation}
+x(t)\ =\ \psi(t,t_{0},x(t_{0}),u(\tau)),\ t_{0}\ \leq\ \tau\ < t
+\end{equation}
+
+
+De esta forma se define el espacio de estado, siendo este el espacio vectorial en el cual el vector de un estado toma valores, el cual se puede escribir de manera generalizada.
+
+
+la teoría de estado representa un formalismo para el tratamiento y resolución de sistemas dinámicos deterministas. La evolución del sistema y la salida solo dependerán del estado actual, ya que $x(t)$ cuenta con la información del pasado.
+
+función contínua
+\begin{equation}
+\dot{x}(t)\ =\ f(t,x(t),u(t))
+\end{equation}
+
+\begin{equation}
+y_{k}\ =\ \eta(t,x(t),u(t))
+\end{equation}
+
+\section{Cadena de Markov}
+Se representa mediante dos fases:
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=3.5cm]{Figuras/markov.png}
+	\caption{Cadena de markov}
+ \label{markov}
+ \end{figure}
+ 
+ 
+
+\textbf{Análisis}
+\begin{equation}
+p(x,{t}\ |\ y_{t})
+\end{equation}
+
+
+\textbf{Predicción}
+\begin{equation}
+p(x,t^{+}\ |\ y_{t})
+\end{equation}
+
+Se utiliza el de Bayes para estimar la probabilidad de obtener cierto estado en el tiempo discreto $t_{k}$, dado el historial de las observaciones. 
+
+
+
+\section{Bayes}
+
+\begin{equation}
+p(x,t_{k}\ |\ y_{t_{k}})\ \sim\ p(x,t_{k}\ |\ y_{k},y_{t_{k-1}})
+\end{equation}
+
+Aplicando el teorema de probabilidad conjunta de bayes se tiene:
+
+\begin{equation}
+p(x,t_{k}\ |\ y_{t_{k}})\ =\ \frac{p(y_{k}\ |\ x_{k},y_{t_{k-1}})p(x,t_{k}\ |\ y_{t_{k-1}})}{p(y_{k}\ |\ y_{t_{k-1}})}
+\end{equation}
+
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=6cm]{Figuras/gaussian_multiplication.png}
+	\caption{Multiplicación de dos gaussianas}
+ \label{niveles_risk}
+ \end{figure}
+
+Donde $p(y_{k}\ |\ x_{k},y_{t_{k-1}})$ representa la probabilidad (likelihood), sería la función de distribución de probabilidad de los datos observados, $p(x,t_{k}\ |\ y_{t_{k-1}})$ es el estimado a priori. El denominador (Normalización), se puede representar de la siguiente manera.
+
+$p(y_{t}\ |\ y_{t_{k-1}})\ =\ \int p(y_{k}\ |\ x)p(x,t_{k}\ |\ y_{t_{k-1}})dx$
+
+\section{Kalman filter}
+
+
+las probabilidades se representan mediante funciones gaussianas, dada la facilidad de maniputlación de estas, ya que el producto de dos gaussianas es otra gaussiana
+
+
+\subsection{Algorithm}
+
+
+The algorithm is the same Bayesian filter algorithm that we have used in every chapter. The update step is slightly more complicated, but I will explain why when we get to it.
+
+\subsection{Initialization}
+
+\begin{itemize}
+    \item Initialize the state of the filter
+    \item Initialize our belief in the state
+\end{itemize}
+
+\subsection{Prediccción}
+
+\begin{itemize}
+	\item Use process model to predict state at the next time step
+	\item Adjust belief to account for the uncertainty in prediction    
+\end{itemize}
+
+\subsection{Actualización}
+
+\begin{itemize}
+	\item Get a measurement and associated belief about its accuracy
+	\item Compute residual between estimated state and measurement
+	\item Compute scaling factor based on whether the measurement or prediction is more accurate
+    \item set state between the prediction and measurement based on scaling factor
+    \item update belief in the state based on how certain we are in the measurement
+
+\end{itemize}
+
+\section{Ensemble Kalman Filter}
+
+\begin{equation}
+x_{t+1}^{i-} = f(x_{t}^{i+},u_{t}^{i},\theta,t) + \omega_{t}^{i},i = 1\ ...n,\ \omega_{t}^{i} \sim  N(0,Q_{t})
+\end{equation}
+
+Donde $x_{t+1}^{i-}$  es el estado del iésimo ensemble pronosticado para el tiempo $t+1$, $x_{t}^{i+}$ es el iésimo estado actualizado en el tiempo $t$ y $u_{t}^{i}$ las entradas. Además, con el fin de representar los errores del modelo, se agrega ruido mediante la matrix de covarianza $\omega_{t}^{i} \sim  N(0,\sum_{t}^{s})$ y se generan perturbaciones en las entradas $\zeta_{t}^{i}$ en cada paso del tiempo.
+
+\begin{equation}
+u_{t}^{i}\ =\ u_{t}\ +\ \zeta_{t}^{i},\ \ \ \zeta_{t}^{i} \sim N(0,R_{t+1})
+\end{equation}
+
+
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=10cm]{Figuras/ensemble_schema.png}
+	\caption{Lorenz: baja varianza en el proceso del modelo}
+ \label{ensemble_schema}
+ \end{figure}
+
+Para tener una varianza suficiente y evitar ..., las observaciónes se deben tratar como variables aleatorias, usando la media como la actual observación y con una covarianza definida.
+\citep{burgers1998analysis}.
+
+los estados $x_{t+1}^{i-}$ se actualizan usando el Gain $K_{t+1}$ 
+
+Observation ensemble member
+
+\begin{equation}
+y_{t+1}^{i}\ =\ Hx_{t+1} + \varepsilon_{t+1}^{i},\varepsilon_{t+1}^{i}\ \sim \ N(0,S_{t+1})
+\end{equation}
+
+\begin{equation}
+x_{t+1}^{i+}\ =\ x_{t+1}^{-}\ +\ K_{t+1}(y_{t+1}^{i}-Hx_{t+1}^{i-})
+\end{equation}
+
+\begin{equation}
+K_{t+1}\ =\ P_{t+1}^{-}H^{T}(HP_{t+1}^{-}H^T\ +\ S_{t+1})^{-1}
+\end{equation}
+
+\begin{equation}
+P_{t+1}^{-}\ =\ \frac{1}{N-1}\sum_{i=1}^{N}[(x_{t+1}^{i-}-<x_{t+1}^{-}>)(x_{t+1}^{i-}-<x_{t+1}^{-}>)^{T}]^{-1}
+\end{equation}
+
+\begin{equation}
+<x_{t+1}^{-}>\ =\ \frac{1}{N}\sum_{i=1}^{N}x_{t+1}^{i-}
+\end{equation}
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=8cm]{Figuras/parabolico.png}
+	\caption{EnKF en lanzamiento parabólico}
+ \label{niveles_risk}
+ \end{figure}
+ 
+ \begin{figure}[h!]
+ \centering
+	\includegraphics[height=8cm]{Figuras/parabolico_2.png}
+	\caption{EnKF en lanzamiento parabólico}
+ \label{niveles_risk}
+ \end{figure}
+ 
+ 
+
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=12cm]{Figuras/Lorenz_1.png}
+	\caption{Lorenz: baja varianza en el proceso del modelo}
+ \label{niveles_risk}
+ \end{figure}
+ 
+ 
+\begin{figure}[h!]
+ \centering
+	\includegraphics[height=12cm]{Figuras/Lorenz_2.png}
+	\caption{Lorenz: ajuste de varianza en el proceso del modelo}
+ \label{niveles_risk}
+ \end{figure}
+ 
+
+
+\chapter{Estado del arte} 
+Kalmamn history
+\citep{kalman1960new}
+
+
+- Lorenz 1963
+Numerical solution of the convection equation 
+\citep{lorenz1963deterministic}
+
+
+EnkF evensen formaulation
+\citep{evensen1994sequential}
+
+
+- Solution of lorenz with EnKf
+\citep{evensen1997advanced}  
+
+
+para que el análisis sea consistente y la varianza no sea muy pequeña se deben tratar las observaciones como variables aleatorias.
+\citep{burgers1998analysis}
+
+
+
+
+- Control en el espacio de estado
+\citep{dominguez2000control}
+
+Ensemble Kalman evensen
+\citep{evensen2002sequential}
+
+dual in rainfall runoff
+\citep{moradkhani2005dual}
+and \citep{vrugt2006ral}.
+
+
+Data assimilation for estimating the terrestrial water budget useing a Constraint for water inbalance.
+also incorpora mas conocimiento del sistema hidrológico 
+\citep{pan2006data}
+
+Real time flood forecasting using ensemble kalman filter
+\citep{srikanthan2007real}
+
+- state updating
+- parameter updating
+- dual EnKf
+
+Pros and cons Enkf
+\citep{ehrendorfer2007review}
+
+first attempt integrates framework state and parameters, also simplifies tratment of forcing data
+\citep{liu2007uncertainty}
+
+- Distributed schema: Corregir celdas aguas arriba mediante un factor de pesos. The correction factors are applied to correct streamflow variables for each cell
+located upstream of each gauging station, using as a weighting factor the area drained
+by each cell.
+\citep{da2007data}
+
+assimilate streamflow
+\citep{clark2008hydrological}
+
+Data assimilatiio for distributed hydrological catchment modeling via ensemble kallman filter
+\citep{xie2010data}
+
+localization
+\citep{roh2015multivariate}
+
+
+state and parameter estimation of two land surface models usig the enkf and particle 
+- state augmentation
+- dual estimation
+\citep{zhang2017state}
+
+
+- Asimilació en modelo mensual
+\citep{xiong2018identifying}
+
+Inflation method for ensemble Kalman filter in soil hydrology
+\citep{bauser2018inflation}
+
+\chapter{Asimilación en un modelo hidrológico} 
+
+
+
+\section{History}
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{referencias} %crear el .bib desde 
+
+
+
+\end{document}
+
+%\include{Aire}
+%\include{DensificacionAire}
+
+
+
+
+

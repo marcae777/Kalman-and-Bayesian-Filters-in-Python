@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Informe.aux
+A level-1 auxiliary file: Portada.aux
+The style file: apalike.bst
+Database file #1: referencias.bib
+Repeated entry---line 157 of file referencias.bib
+ : @article{reichle2002hydrologic
+ :                               ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 215 of file referencias.bib
+ : 
+ : @article{evensen1997advanced,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 289 of file referencias.bib
+ : @article{moradkhani2005dual
+ :                            ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "vrugt2006ral"
+Warning--I didn't find a database entry for "ehrendorfer2007review"
+Warning--I didn't find a database entry for "roh2015multivariate"
+Warning--empty journal in bauser2018inflation
+Warning--empty journal in zhang2017state
+You've used 20 entries,
+            1935 wiz_defined-function locations,
+            602 strings with 7663 characters,
+and the built_in function-call counts, 8397 in all, are:
+= -- 825
+> -- 354
+< -- 11
++ -- 124
+- -- 120
+* -- 740
+:= -- 1453
+add.period$ -- 60
+call.type$ -- 20
+change.case$ -- 159
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 302
+empty$ -- 582
+format.name$ -- 146
+if$ -- 1627
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 21
+newline$ -- 101
+num.names$ -- 60
+pop$ -- 136
+preamble$ -- 1
+purify$ -- 160
+quote$ -- 0
+skip$ -- 232
+stack$ -- 0
+substring$ -- 635
+swap$ -- 36
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 118
+warning$ -- 2
+while$ -- 71
+width$ -- 0
+write$ -- 256
+(There were 3 error messages)
